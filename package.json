@@ -1,0 +1,11 @@
+{
+  "name": "abf-mcp-client",
+  "version": "1.0.0",
+  "description": "Minimal zero-dependency MCP client for Agent Bounty Feed (Streamable HTTP). Lists open paid bounties an AI agent can claim.",
+  "type": "module",
+  "bin": { "abf": "client.js" },
+  "main": "client.js",
+  "files": ["client.js", "README.md"],
+  "scripts": { "start": "node client.js list" },
+  "license": "MIT"
+}

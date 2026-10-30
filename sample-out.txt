@@ -1,0 +1,11 @@
+Open paid bounties (3):
+
+- [?] Audit contest: Revert v4lend Competition
+  https://cantina.xyz/competitions/e275368c-547d-4d91-a418-053ad31082a8
+
+- [?] Jira Service Management Connector
+  https://github.com/onyx-dot-app/onyx/issues/2281
+
+- [?] Crafting a Comprehensive Tutorial for Vectara Chat
+  https://github.com/lablab-ai/community-content/issues/462
+
