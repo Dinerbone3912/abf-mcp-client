@@ -77,3 +77,26 @@ Responses may come back as plain JSON **or** as Server-Sent Events (`text/event-
 - `sample-out.txt` — captured real output
 
 MIT.
+
+## Paid trust layer (x402) — `x402.js`
+
+Option (b) of the bounty: pay 0.01 USDC on Base to unlock `/v1/bounties` (payout history,
+competition counts, verification evidence per bounty).
+
+```bash
+npm i viem
+WALLET_KEY=0x<funded-key-with-USDC-on-Base> node x402.js --limit 20 --min_usd 1
+```
+
+How it works (implements the x402 "exact" scheme with EIP-3009 `transferWithAuthorization`):
+1. `GET /v1/bounties` → `402` with `accepts[]` (asset, payTo, maxAmountRequired, extra.name/version).
+2. Build EIP-712 domain `{ name, version, chainId:8453, verifyingContract: asset }` and message
+   `{ from, to, value, validAfter, validBefore, nonce }`.
+3. Sign with the wallet key; base64 the payload into the `X-PAYMENT` header.
+4. Retry; the server settles and returns `200` + enriched JSON.
+
+Signing correctness is covered by a no-spend test:
+
+```bash
+node test-x402-sign.mjs   # PASS — signature recovers to signer
+```
